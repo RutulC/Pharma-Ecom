@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark mb-3">
+      <div class="container-fluid">
+        <a class="navbar-brand mb-0 h1" href="/">PharmaEcom</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">HOME</a>
+            </li>
+          </ul>
+        </div>
+        <div class="navbar-nav">
+          <% if(!currentUser)  { %>
+          <a class="nav-link" href="/login">Login</a>
+          <a class="nav-link" href="/register">Register</a>
+            <% } else { %>
+          <a class="nav-link" href="/logout">Logout</a>
+              <% } %>
+        </div>
+      </div>
+    </nav>
+    <h1 class="text-center">Edit Product</h1>
+    <div class="row align-items-center">
+
+      <div class="col-6 offset-3">
+        <form action="/products/<%= product._id %>?_method=PUT" method="POST">
+          <div class="mb-3">
+            <label class="form-label" for="name">Name</label>
+            <input
+              class="form-control"
+              type="text"
+              id="name"
+              name="product[title]"
+              value="<%= product.title %>"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="image">Image Url</label>
+            <input
+              class="form-control"
+              type="text"
+              id="image"
+              name="product[image]"
+              value="<%= product.image %>"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="date">Manufacturing Date</label>
+            <input
+              class="form-control"
+              type="text"
+              id="date"
+              name="product[manufacturingDate]"
+              value="<%= product.manufacturingDate %>"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="date">Expiry Date</label>
+            <input
+              class="form-control"
+              type="text"
+              id="date"
+              name="product[expiryDate]"
+              value="<%= product.expiryDate %>"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="company">Company</label>
+            <input
+              class="form-control"
+              type="text"
+              id="company"
+              name="product[companyName]"
+              value="<%= product.companyName %>"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="price">Price</label>
+
+            <div class="col-12">
+              <div class="input-group">
+                <div class="input-group-text">₹</div>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="price"
+                  placeholder="0.00"
+                  name="product[price]"
+                  value="<%= product.price %>"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="description">Description</label>
+            <textarea
+              class="form-control"
+              name="product[description]"
+              id="description"
+              cols="30"
+              rows="10"
+              placeholder="Description"
+            >
+<%= product.description %>
+            </textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="description">Benefits</label>
+            <textarea
+              class="form-control"
+              name="product[benefits]"
+              id="description"
+              cols="30"
+              rows="10"
+              placeholder="Description"
+            >
+<%= product.description %>
+            </textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="description">Side Effects</label>
+            <textarea
+              class="form-control"
+              name="product[sideEffects]"
+              id="description"
+              cols="30"
+              rows="10"
+              placeholder="Description"
+            >
+<%= product.description %>
+            </textarea>
+          </div>
+
+          <div class="mb-3">
+            <button class="btn btn-info" type="submit">Update Product</button>
+          </div>
+        </form>
+
+        <form action="/products/<%=product._id%>?_method=DELETE" method="POST">
+          <button class="btn btn-danger mb-2">Delete</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <footer class="footer bg-dark py-3 mt-auto">
+        <div class="container text-muted">
+          <p class="float-end mb-1">
+            <!-- <a class="link-primary" href="#"> 	&#8593; &nbsp; Back to top</a> -->
+          </p>
+          <p class="mb-1 dark h5">&copy;PharmaEcom  &nbsp; All Right Reserved</p>
+          <!-- <p class="mb-0">New to PharmaEcom? <a href="/">Visit the homepage</a> or read our <a href="#">getting started guide</a>.</p> -->
+        </div>
+      </footer>
+  </body>
+</html>
