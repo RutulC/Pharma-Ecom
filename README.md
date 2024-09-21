@@ -18,8 +18,8 @@ To get started with the project, follow these steps:
 
 Clone the repository:
    ```bash 
-   git clone https://github.com/your-username/pharmaecom.git 
-   cd pharmaecom 
+   git clone https://github.com/RutulC/Pharma-Ecom.git 
+   cd Pharma-Ecom 
    ```
 
 Install the dependencies:
